@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "minTimeToVisitAllPoints.c"
+#include "../solutions/minTimeToVisitAllPoints.c"
 
 void testCase(int points[][2], int size, int expected, int testCaseNumber, int* passed, int* failed) {
     int result = minTimeToVisitAllPoints(points, size);
