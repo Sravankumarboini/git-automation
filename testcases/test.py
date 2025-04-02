@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '../solutions')  # Add solutions directory to path
+
 from minTimeToVisitAllPoints import min_time_to_visit_all_points
 
 def test_case(points, expected, test_number, passed, failed):
