@@ -86,7 +86,7 @@ jobs:
         if: env.language == 'Python'
         run: |
           echo "Running Python Test Cases..."
-          python3 testcases/TestCases.py | tee test_results.log
+          python3 testcases/test.py | tee test_results.log
 
       - name: Compile and Run Java Tests
         if: env.language == 'Java'
