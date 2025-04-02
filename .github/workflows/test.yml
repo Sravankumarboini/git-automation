@@ -26,7 +26,7 @@ jobs:
             
             # Get changed files in solutions/ directory
             CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^solutions/' || true)
-            
+
             echo "Detected changed files: $CHANGED_FILES"
             
             if [ -z "$CHANGED_FILES" ]; then
@@ -71,7 +71,7 @@ jobs:
       - name: Compile and Run C Tests
         if: env.language == 'C'
         run: |
-          gcc testcases/ctest.c -o test_runner
+          gcc testcases/test.c -o test_runner
           echo "Running C Test Cases..."
           ./test_runner | tee test_results.log  # Capture output in logs
 
