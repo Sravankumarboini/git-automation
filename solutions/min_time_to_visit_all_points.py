@@ -1,4 +1,4 @@
-
+#commit
 Class Solution:
     def min_time_to_visit_all_points(points):
         time = 0
