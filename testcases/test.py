@@ -1,7 +1,11 @@
 import sys
-sys.path.insert(0, '../solutions')  # Add solutions directory to path
+import os
 
-from minTimeToVisitAllPoints import min_time_to_visit_all_points
+# Add the solutions directory to Python's path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../solutions')))
+
+# Now import the function correctly
+from min_time_to_visit_all_points import min_time_to_visit_all_points
 
 def test_case(points, expected, test_number, passed, failed):
     result = min_time_to_visit_all_points(points)
