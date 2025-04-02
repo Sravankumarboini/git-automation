@@ -91,7 +91,7 @@ jobs:
       - name: Compile and Run Java Tests
         if: env.language == 'Java'
         run: |
-          javac testcases/TestCases.java
+          javac testcases/TestMinTimeToVisitAllPoints.java
           echo "Running Java Test Cases..."
           java testcases/TestMinTimeToVisitAllPoints.java | tee test_results.log
 
