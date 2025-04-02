@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../solutions/minTimeToVisitAllPoints.cpp" // Include the implementation file
+#include "../solutions/solution.cpp" // Include the implementation file
 
 void testCase(std::vector<std::vector<int>>& points, int expected, int testCaseNumber, int& passed, int& failed) {
     Solution sol;
