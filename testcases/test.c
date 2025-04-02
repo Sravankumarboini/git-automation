@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "min_time_to_visit_all_points.c"
+#include "../solutions/minTimeToVisitAllPoints.c"
 
 void runTest(int** points, int pointsSize, int* pointsColSize, int expected, int testCaseNumber, int* passed, int* failed) {
     int result = minTimeToVisitAllPoints(points, pointsSize, pointsColSize);
