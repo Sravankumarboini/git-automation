@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-//commit
-int max(int a, int b) {
-    return (a > b) ? a : b;
-}
+#include <math.h>
 
-int minTimeToVisitAllPoints(int points[][2], int size) {
+int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize) {
     int time = 0;
-    for (int i = 1; i < size; i++) {
+    for (int i = 1; i < pointsSize; i++) {
         int dx = abs(points[i][0] - points[i - 1][0]);
         int dy = abs(points[i][1] - points[i - 1][1]);
-        time += max(dx, dy);
+        time += (dx > dy) ? dx : dy;
     }
     return time;
 }
+
