@@ -2,7 +2,7 @@ package testcases;
 
 import solutions.Solution;
 
-public class TestMinTimeToVisitAllPoints {
+public class Test {
     public static void testCase(int[][] points, int expected, int testCaseNumber, int[] results) {
         Solution sol = new Solution();
         int result = sol.minTimeToVisitAllPoints(points);
