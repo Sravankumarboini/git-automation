@@ -6,5 +6,6 @@ class Solution {
 public:
     int minTimeToVisitAllPoints(std::vector<std::vector<int>>& points) {
 
+        return 0;
     }
  };
