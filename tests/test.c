@@ -87,4 +87,6 @@ int main() {
     // Output the results
     printf("\nTest cases passed: %d\n", passed);
     printf("Test cases failed: %d\n", failed);
+
+    return 0;
 }
