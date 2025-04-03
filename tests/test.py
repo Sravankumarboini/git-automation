@@ -1,43 +1,29 @@
 import sys
-import os
-from typing import List
-
-# Ensure Python can find the solutions directory
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../solutions')))
+sys.path.insert(0, "../solutions")  # Ensure solutions/ is in the path
 
 from min_time_to_visit_all_points import Solution
 
-def test_case(points: List[List[int]], expected: int, test_number: int, passed: list, failed: list):
+def run_test_case(points, expected, test_case_number):
     sol = Solution()
     result = sol.minTimeToVisitAllPoints(points)
-    print(f"Test case {test_number}: Expected = {expected}, Actual = {result}")
+
+    print(f"Test case {test_case_number}: Expected = {expected}, Actual = {result}")
     if result == expected:
-        print(f"Test case {test_number} ✅ PASS")
-        passed.append(1)
+        print(f"Test case {test_case_number} ✅\n")
     else:
-        print(f"Test case {test_number} ❌ FAIL")
-        failed.append(1)
-
-def run_tests():
-    passed, failed = [], []
-
-    test_cases = [
-        ([[0, 0]], 0),
-        ([[0, 0], [1000, 1000]], 1000),
-        ([[0, 0], [5, 0], [10, 0]], 10),
-        ([[0, 0], [0, 5], [0, 10]], 10),
-        ([[-1000, -1000], [1000, 1000], [2000, 2000]], 3000),
-        ([[5, 5], [5, 5], [5, 5]], 0),
-        ([[-5, -5], [-3, -3], [0, 0]], 5),
-        ([[0, 0], [10, 0], [10, 10], [0, 10]], 30),
-        ([[1, 1], [2, 2], [3, 3], [4, 4]], 3),
-        ([[i, 0] for i in range(1000)], 999),
-    ]
-
-    for i, (points, expected) in enumerate(test_cases, start=1):
-        test_case(points, expected, i, passed, failed)
-
-    print(f"\n✅ Passed: {len(passed)} | ❌ Failed: {len(failed)}")
+        print(f"Test case {test_case_number} ❌\n")
 
 if __name__ == "__main__":
-    run_tests()
+    run_test_case([[0, 0]], 0, 1)
+    run_test_case([[0, 0], [1000, 1000]], 1000, 2)
+    run_test_case([[0, 0], [5, 0], [10, 0]], 10, 3)
+    run_test_case([[0, 0], [0, 5], [0, 10]], 10, 4)
+    run_test_case([[-1000, -1000], [1000, 1000], [2000, 2000]], 3000, 5)
+    run_test_case([[5, 5], [5, 5], [5, 5]], 0, 6)
+    run_test_case([[-5, -5], [-3, -3], [0, 0]], 5, 7)
+    run_test_case([[0, 0], [10, 0], [10, 10], [0, 10]], 30, 8)
+    run_test_case([[1, 1], [2, 2], [3, 3], [4, 4]], 3, 9)
+
+    # Large test case
+    points = [[i, 0] for i in range(1000)]
+    run_test_case(points, 999, 10)
