@@ -1,7 +1,7 @@
-package tests;
+package tests;  // Add this line at the top
 
-import solutions.Solution;
-
+import solutions.Solution;  // Ensure the solution is imported correctly
+import java.util.*;
 public class Test {
     public static void testCase(int[][] points, int expected, int testCaseNumber, int[] results) {
         Solution sol = new Solution();
