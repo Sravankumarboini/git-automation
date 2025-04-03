@@ -1,7 +1,11 @@
 import sys
-sys.path.insert(0, "../solutions")  # Ensure solutions/ is in the path
+import os
 
-from solutions import Solution
+# Ensure that the parent directory is in the path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../solutions')))
+
+# Import the Solution class from solution.py
+from solution import Solution
 
 def run_test_case(points, expected, test_case_number):
     sol = Solution()
