@@ -55,6 +55,4 @@ int main() {
 
     std::cout << "\nTest cases passed: " << passed << std::endl;
     std::cout << "Test cases failed: " << failed << std::endl;
-
-    return 0;
 }
