@@ -4,6 +4,5 @@ public class Solution {
     public int minTimeToVisitAllPoints(int[][] points) {
         //code here
         
-        return 0;
     }
 }
