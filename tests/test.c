@@ -1,4 +1,6 @@
-
+#include <stdio.h>  // For printf
+#include <stdlib.h> // For memory allocation (if needed)
+#include "../solutions/solution.c"
 void runTest(int** points, int pointsSize, int* pointsColSize, int expected, int testCaseNumber, int* passed, int* failed) {
     int result = minTimeToVisitAllPoints(points, pointsSize, pointsColSize);
     printf("Test case %d: Expected = %d, Actual = %d\n", testCaseNumber, expected, result);
