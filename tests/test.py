@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, "../solutions")  # Ensure solutions/ is in the path
 
-from min_time_to_visit_all_points import Solution
+from solutions import Solution
 
 def run_test_case(points, expected, test_case_number):
     sol = Solution()
