@@ -7,8 +7,8 @@ on:
       - 'tests/**'
   pull_request:
     paths:
-      - 'solutions/'
-      - 'tests/'
+      - 'solutions/**'
+      - 'tests/**'
 
 jobs:
   run-tests:
