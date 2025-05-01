@@ -15,19 +15,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Ensure previous commit is available
+          fetch-depth: 2
 
       - name: Detect Changed Files
         id: changed-files
         run: |
+          set -euo pipefail
           BEFORE_COMMIT="${{ github.event.before }}"
           if [ -z "$BEFORE_COMMIT" ] || ! git cat-file -e "$BEFORE_COMMIT"^{commit}; then
-            BEFORE_COMMIT=$(git rev-parse HEAD~1)  # Use last commit as fallback
+            BEFORE_COMMIT=$(git rev-parse HEAD~1)
           fi
-          
-          CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^solutions/')
+
+          CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^solutions/' || true)
           echo "Detected changed files: $CHANGED_FILES"
-          
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No file changes detected. Exiting..."
             exit 1
@@ -66,29 +67,52 @@ jobs:
       - name: Compile and Run C Tests
         if: env.LANGUAGE == 'C'
         run: |
-          gcc tests/test.c -o test_runner
+          set -e
+          gcc solutions/*.c tests/test.c -o test_runner
           echo "Running C Test Cases..."
-          ./test_runner | tee test_results.log
+          if ./test_runner | tee test_results.log; then
+            echo "correct"
+          else
+            echo "wrong"
+            exit 1
+          fi
 
       - name: Compile and Run C++ Tests
         if: env.LANGUAGE == 'C++'
         run: |
-          g++ tests/test.cpp -o test_runner_cpp
+          set -e
+          g++ solutions/*.cpp tests/test.cpp -o test_runner_cpp
           echo "Running C++ Test Cases..."
-          ./test_runner_cpp | tee test_results.log
+          if ./test_runner_cpp | tee test_results.log; then
+            echo "correct"
+          else
+            echo "wrong"
+            exit 1
+          fi
 
       - name: Run Python Tests
         if: env.LANGUAGE == 'Python'
         run: |
           echo "Running Python Test Cases..."
-          python3 tests/test.py | tee test_results.log
+          if python3 tests/test.py | tee test_results.log; then
+            echo "correct"
+          else
+            echo "wrong"
+            exit 1
+          fi
 
       - name: Compile and Run Java Tests
         if: env.LANGUAGE == 'Java'
         run: |
+          set -e
           javac -d . solutions/*.java tests/*.java
           echo "Running Java Test Cases..."
-          java tests.Test | tee test_results.log
+          if java tests.Test | tee test_results.log; then
+            echo "correct"
+          else
+            echo "wrong"
+            exit 1
+          fi
 
       - name: Upload Test Results
         if: always()
