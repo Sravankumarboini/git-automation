@@ -11,6 +11,5 @@ int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize) {
         totalTime += (xDiff > yDiff) ? xDiff : yDiff;
     }
     return totalTime;
-    
 }
 
